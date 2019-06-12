@@ -36,7 +36,7 @@ public class AgentsServiceImpl implements AgentService
     @Override
     public Agents findAgentByName(String name)
     {
-        Agents agent = agentrepos.findByName(name);
+        Agents agent = agentrepos.findByAgentname(name);
         if (agent == null) {
             throw new EntityNotFoundException("Agent " + name + " not found.");
         }
@@ -78,16 +78,17 @@ public class AgentsServiceImpl implements AgentService
         }
 
         for (Customers c : agent.getCustomers()) {
-            newAgent.getCustomers().add(new Customers(c.getCustname(),
+            newAgent.getCustomers().add(new Customers(
+                    c.getCustname(),
                     c.getCustcity(),
                     c.getWorkingarea(),
                     c.getCustcountry(),
                     c.getGrade(),
-                    c.getPhone(),
                     c.getOpeningamt(),
                     c.getReceiveamt(),
                     c.getPaymentamt(),
                     c.getOutstandingamt(),
+                    c.getPhone(),
                     newAgent));
         }
 

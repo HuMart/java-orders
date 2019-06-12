@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customer")
 public class Customers
 {
     @Id
@@ -21,10 +21,10 @@ public class Customers
     private String workingarea;
     private String custcountry;
     private String grade;
-    private double openingamt;
-    private double receiveamt;
-    private double paymentamt;
-    private double outstandingamt;
+    private Double openingamt;
+    private Double receiveamt;
+    private Double paymentamt;
+    private Double outstandingamt;
     private String phone;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -36,14 +36,14 @@ public class Customers
     @OneToMany(mappedBy = "customer",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
-    @JsonIgnoreProperties("customers")
+    @JsonIgnoreProperties("customer")
     private List<Orders> orders = new ArrayList<>();
 
     public Customers()
     {
     }
 
-    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agents agent)
+    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, Double openingamt, Double receiveamt, Double paymentamt, Double outstandingamt, String phone, Agents agent)
     {
         this.custname = custname;
         this.custcity = custcity;
@@ -118,7 +118,7 @@ public class Customers
         this.grade = grade;
     }
 
-    public double getOpeningamt()
+    public Double getOpeningamt()
     {
         return openingamt;
     }
@@ -128,7 +128,7 @@ public class Customers
         this.openingamt = openingamt;
     }
 
-    public double getReceiveamt()
+    public Double getReceiveamt()
     {
         return receiveamt;
     }
@@ -138,7 +138,7 @@ public class Customers
         this.receiveamt = receiveamt;
     }
 
-    public double getPaymentamt()
+    public Double getPaymentamt()
     {
         return paymentamt;
     }
@@ -148,7 +148,7 @@ public class Customers
         this.paymentamt = paymentamt;
     }
 
-    public double getOutstandingamt()
+    public Double getOutstandingamt()
     {
         return outstandingamt;
     }
